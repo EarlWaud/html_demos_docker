@@ -19,7 +19,7 @@ WORKDIR /usr/local/tomcat/webapps
 #RUN unzip ./master.zip -d ./
 #RUN mv ./html_demos-master ./myapp
 #RUN rm master.zip
-git clone https://github.com/EarlWaud/html_demos.git
+RUN git clone https://github.com/EarlWaud/html_demos.git
 
 WORKDIR /usr/local/tomcat/webapps/html_demos
 EXPOSE 8080
