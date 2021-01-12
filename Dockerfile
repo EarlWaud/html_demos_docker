@@ -5,6 +5,7 @@ LABEL maintainer="earl.waud@gmail.com"
 RUN apk update && \
 	apk upgrade && \
 	apk --no-cache add tar curl tini && \
+	apk --no-cache add git \
 	apk --no-cache add --virtual wget unzip ca-certificates
 
 #	apk --no-cache add --virtual devs gcc make python wget unzip ca-certificates
@@ -14,12 +15,13 @@ RUN apk update && \
 
 WORKDIR /usr/local/tomcat/webapps
 
-RUN wget --no-check-certificate -O master.zip https://codeload.github.com/EarlWaud/html_demos/zip/master
-RUN unzip ./master.zip -d ./
-RUN mv ./html_demos-master ./myapp
-RUN rm master.zip
+#RUN wget --no-check-certificate -O master.zip https://codeload.github.com/EarlWaud/html_demos/zip/master
+#RUN unzip ./master.zip -d ./
+#RUN mv ./html_demos-master ./myapp
+#RUN rm master.zip
+git clone https://github.com/EarlWaud/html_demos.git
 
-WORKDIR /usr/local/tomcat/webapps/myapp
+WORKDIR /usr/local/tomcat/webapps/html_demos
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
