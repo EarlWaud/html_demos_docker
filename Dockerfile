@@ -5,13 +5,14 @@ LABEL maintainer="earl.waud@gmail.com"
 RUN apk update && \
 	apk upgrade && \
 	apk --no-cache add tar curl tini && \
-	apk --no-cache add git \
 	apk --no-cache add --virtual wget unzip ca-certificates
 
 #	apk --no-cache add --virtual devs gcc make python wget unzip ca-certificates
 #  	apk del devs gcc make python wget unzip ca-certificates && \
 #	npm cache clean && \
 #	rm -rf /tmp/npm*
+
+RUN apk --no-cache add git
 
 WORKDIR /usr/local/tomcat/webapps
 
